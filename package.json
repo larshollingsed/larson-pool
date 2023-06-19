@@ -39,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "author": "Lars Hollingsed",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
   }
 }
