@@ -47,7 +47,6 @@ const mock = [
       },
     ],
   },
-  // create 13 more games here
   {
     name: 'Alpha Bowl',
     location: 'Austin, TX',

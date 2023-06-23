@@ -12,17 +12,11 @@ const SelectionRow = ({
   setIsEditing,
   selectOptions,
 }) => {
-  // return (
-  //   <select>
-  //     {getSelectOptions()}
-  //   </select>
-  // );
-
   if (!selectedTeam || isEditing) {
     return (
       <>
         <GridItem colSpan={2}>
-          <Text fontSize="2xl" marginRight="10px">{rank}</Text>
+          <Text fontSize="3xl" marginRight="10px">{rank}</Text>
         </GridItem>
         <GridItem>
           <Select key={rank} {...selectProps} onChange={onChange(rank)} value={getValue(rank) || undefined}>
@@ -37,16 +31,16 @@ const SelectionRow = ({
   return (
     <>
       <GridItem>
-        <Text as="span" fontSize="2xl" marginRight="10px">{rank}</Text>
+        <Text as="span" fontSize="3xl" marginRight="10px">{rank}</Text>
       </GridItem>
-          <GridItem>
-            <Text as="span">{selectedTeam.name}</Text>
-            <img src={selectedTeam.logo} />
-          </GridItem>
-          <GridItem>
-            <Button onClick={() => setIsEditing(rank)}>
-              Change Team
-            </Button>
+      <GridItem style={{ display: 'flex', alignContent: 'middle' }}>
+        <Text as="span" marginRight="10px" fontSize="2xl">{selectedTeam.name}</Text>
+        <img src={selectedTeam.logo} width="50px" style={{ display: 'inline-block' }}/>
+      </GridItem>
+      <GridItem>
+        <Button onClick={() => setIsEditing(rank)}>
+          Change Team
+        </Button>
       </GridItem>
     </>
   )

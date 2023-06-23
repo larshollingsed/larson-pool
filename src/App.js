@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import logo from './logo.svg';
 import './App.css';
-import SelectionForm from './components/SelectionForm/SelectionForm.js';
+import Layout from './components/Layout/Layout.js';
 import FormProvider from './contexts/FormProvider.js'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div>
       <ChakraProvider>
         <FormProvider>
-          <SelectionForm />
+          <Layout />
         </FormProvider>
       </ChakraProvider>
     </div>
