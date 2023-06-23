@@ -121,7 +121,6 @@ export const getOpposingTeamId = (teamId) => {
 export const length = mock.length;
 
 export const getSelectOptions = (chosenTeams = []) => {
-  console.log(chosenTeams)
   const chosenGames = getChosenGames(chosenTeams);
   const unChosenGames = getUnchosenGames(chosenTeams);
 

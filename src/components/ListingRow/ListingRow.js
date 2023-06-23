@@ -1,19 +1,19 @@
 import React from 'react';
-import { GridItem } from '@chakra-ui/react';
+import { Td, Tr } from '@chakra-ui/react';
 
 const ListingRow = ({ name, points, pointsRemaining }) => {
   return (
-    <>
-      <GridItem>
+    <Tr>
+      <Td border="1px solid" borderColor="black">
         {name}
-      </GridItem>
-      <GridItem>
+      </Td>
+      <Td border="1px solid" borderColor="black">
         {points}
-      </GridItem>
-      <GridItem>
+      </Td>
+      <Td border="1px solid" borderColor="black">
         {pointsRemaining}
-      </GridItem>
-    </>
+      </Td>
+    </Tr>
   );
 };
 
