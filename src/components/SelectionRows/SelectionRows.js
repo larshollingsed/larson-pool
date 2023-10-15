@@ -52,7 +52,8 @@ const SelectionRows = ({
       }
     });
 
-    setValue('teams', newValues)
+    setValue('teams', newValues);
+    setIsEditing(false);
   }
 
   const getValue = (rank) => {
