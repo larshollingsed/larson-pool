@@ -7,7 +7,7 @@ const Layout = () => {
   const [form, setForm] = React.useState(true);
   return (
     <div>
-      <Button onClick={() => setForm(!form)}>Toggle Form</Button>
+      {/* <Button onClick={() => setForm(!form)}>Toggle Form</Button> */}
       {form ? <SelectionForm /> : <Listings />}
     </div>
   );
