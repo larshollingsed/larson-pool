@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Grid, GridItem, Select, Text } from '@chakra-ui/react';
+import { getGameByTeamId } from '../../mocks/mockGames';
 
 const SelectionRow = ({
   rank,
@@ -16,7 +17,7 @@ const SelectionRow = ({
     return (
       <>
         <GridItem colSpan={2}>
-          <Text fontSize="3xl" marginRight="10px">{rank}</Text>
+          <Text fontSize="96" bold marginRight="10px">{rank}</Text>
         </GridItem>
         <GridItem>
           <Select key={rank} {...selectProps} onChange={onChange(rank)} value={getValue(rank) || undefined}>
@@ -28,16 +29,33 @@ const SelectionRow = ({
     );
   }
 
+  const game = getGameByTeamId(selectedTeam.id);
+
   return (
     <>
-      <GridItem>
-        <Text as="span" fontSize="3xl" marginRight="10px">{rank}</Text>
+      <GridItem
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Text fontSize="96px" bold marginRight="10px">{rank}</Text>
       </GridItem>
-      <GridItem style={{ display: 'flex', alignContent: 'middle' }}>
-        <Text as="span" marginRight="10px" fontSize="2xl">{selectedTeam.name}</Text>
-        <img src={selectedTeam.logo} width="50px" style={{ display: 'inline-block' }}/>
+      <GridItem style={{ display: 'flex', alignItems: 'center' }} m="10px">
+        <img src={selectedTeam.logo} style={{ display: 'inline-block', width: '80px', height: '80px', marginRight: '15px' }}/>
+        <div>
+          <Text marginRight="10px" fontSize="2xl">{selectedTeam.name}</Text>
+          <Text marginRight="10px" fontSize="lg">{selectedTeam.school}</Text>
+        </div>
       </GridItem>
-      <GridItem>
+      <GridItem
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Button onClick={() => setIsEditing(rank)}>
           Change Team
         </Button>

@@ -30,7 +30,7 @@ const SelectionRows = ({
   const onChange2 = (rank) => (e) => {
     if (!e?.target?.value) return;
     const values = getValues('teams');
-    console.log(values)
+
     const game = getGameByTeam(e.target.value);
     const team = getSelectedTeam(e.target.value);
     const opposingTeam = getOpposingTeamId(e.target.value);
@@ -84,7 +84,7 @@ const SelectionRows = ({
       }
 
       return (
-        <Grid key={rank} templateColumns="50px 1fr 1fr" border="1px solid" p="10px" m="10px">
+        <Grid key={rank} templateColumns="75px 1fr 1fr" borderBottom="1px solid" borderColor="grey" p="10px" m="10px" maxWidth="750px">
           <SelectionRow
             {...selectionRowProps}
           />

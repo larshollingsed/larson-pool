@@ -73,6 +73,14 @@ const mock = [
   },
 ];
 
+export const getGameByTeamId = (teamId) => {
+  return mock.find((game) => {
+    return game.teams.find((team) => {
+      return team.id === teamId;
+    });
+  });
+};
+
 export const getChosenGames = (chosenTeams) => {
   return mock.filter((game) => {
     return game.teams.find((team) => {
