@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, GridItem, Select, Text } from '@chakra-ui/react';
+import { Button, GridItem, Select, Text, Flex } from '@chakra-ui/react';
 import { getGameByTeamId } from '../../mocks/mockGames';
 
 const SelectionRow = ({
@@ -43,11 +43,13 @@ const SelectionRow = ({
         <Text fontSize="96px" bold marginRight="10px">{rank}</Text>
       </GridItem>
       <GridItem style={{ display: 'flex', alignItems: 'center' }} m="10px">
-        <img src={selectedTeam.logo} style={{ display: 'inline-block', width: '80px', height: '80px', marginRight: '15px' }}/>
-        <div>
-          <Text marginRight="10px" fontSize="2xl">{selectedTeam.name}</Text>
-          <Text marginRight="10px" fontSize="lg">{selectedTeam.school}</Text>
-        </div>
+        <Flex direction={{ base: 'column', sm: 'row' }}>
+          <img src={selectedTeam.logo} style={{ display: 'inline-block', width: '80px', height: '80px', marginRight: '15px' }}/>
+          <div>
+            <Text marginRight="10px" fontSize={{ md: '2xl', base: 'md' }}>{selectedTeam.name}</Text>
+            <Text marginRight="10px" fontSize={{ md: 'lg', base: 'sm' }}>{selectedTeam.school}</Text>
+          </div>
+        </Flex>
       </GridItem>
       <GridItem
         sx={{
