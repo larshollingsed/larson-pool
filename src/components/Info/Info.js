@@ -1,14 +1,15 @@
 import React from 'react';
+import { Grid } from '@chakra-ui/react';
 import FormFieldInput from '../FormFieldInput/FormFieldInput';
 
 const Info = ({ name, points, pointsRemaining }) => {
   return (
-    <div>
+    <Grid maxWidth={{ xl: '50%' }}>
       <FormFieldInput name="firstName" label="First Name" />
       <FormFieldInput name="lastName" label="Last Name" />
       <FormFieldInput name="email" label="Email" />
       <FormFieldInput name="tiebreaker" label="Tiebreaker" />
-    </div>
+    </Grid>
    
   );
 };

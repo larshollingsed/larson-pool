@@ -5,13 +5,13 @@ import { Grid } from '@chakra-ui/react';
 import SelectionRow from '../SelectionRow/SelectionRow';
 
 const SelectionRows = ({
-  name,
-  location,
-  date,
-  time,
-  spread,
-  teams,
-  index,
+  // name,
+  // location,
+  // date,
+  // time,
+  // spread,
+  // teams,
+  // index,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { register, getValues, setValue } = useFormContext();
@@ -84,7 +84,7 @@ const SelectionRows = ({
       }
 
       return (
-        <Grid key={rank} templateColumns="75px 1fr 1fr" borderBottom="1px solid" borderColor="grey" p="10px" m="10px" maxWidth="750px">
+        <Grid key={rank} templateColumns="75px 1fr 1fr" borderBottom="1px solid" borderColor="grey" p="10px" m="10px" maxWidth={{ xl: '50%' }}>
           <SelectionRow
             {...selectionRowProps}
           />
