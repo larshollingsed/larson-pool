@@ -20,9 +20,9 @@ const SelectionForm = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values),
   };
-  // fetch('https://larson-pool-api.vercel.app/', requestOptions)
-
-  fetch('http://localhost:5000/', requestOptions)
+  // fetch('http://localhost:5000/', requestOptions)
+  
+  fetch('https://larson-pool-api.vercel.app/', requestOptions)
       .then(response => response.json())
       .then(setIsLoading(false))
       .then(setHasSubmitted(true));
