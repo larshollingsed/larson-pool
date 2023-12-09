@@ -4,7 +4,8 @@ import { useFormContext } from 'react-hook-form';
 
 
 const FormFieldInput = ({ name, label }) => {
-  const { register, errors } = useFormContext();
+  const { register, formState: { errors }, setError } = useFormContext();
+
   return (
     <FormControl isInvalid={errors?.[name]} p="15px">
       <FormLabel htmlFor={name}>{label}</FormLabel>

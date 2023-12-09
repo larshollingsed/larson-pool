@@ -17,7 +17,7 @@ const SelectionRow = ({
     return (
       <>
         <GridItem colSpan={2}>
-          <Text fontSize="96" bold marginRight="10px">{rank}</Text>
+          <Text fontSize="96" marginRight="10px">{rank}</Text>
         </GridItem>
         <GridItem>
           <Select key={rank} {...selectProps} onChange={onChange(rank)} value={getValue(rank) || undefined}>
@@ -40,7 +40,7 @@ const SelectionRow = ({
           justifyContent: 'center',
         }}
       >
-        <Text fontSize="96px" bold marginRight="10px">{rank}</Text>
+        <Text fontSize="96px" marginRight="10px">{rank}</Text>
       </GridItem>
       <GridItem style={{ display: 'flex', alignItems: 'center' }} m="10px">
         <Flex direction={{ base: 'column', sm: 'row' }}>
