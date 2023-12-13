@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { allTeams, getSelectedTeam, getGameByTeam, getUnchosenGames, getOpposingTeamId, length, getSelectOptions } from '../../mocks/mockGames';
-import { Grid } from '@chakra-ui/react';
+import {
+  Button,
+  Grid,
+  Modal,
+  useDisclosure,
+  ModalBody,
+  ModalCloseButton,
+  ModalFooter,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+} from '@chakra-ui/react';
 import SelectionRow from '../SelectionRow/SelectionRow';
+import GameList from '../GameList/GameList';
 
 const SelectionRows = ({
   // name,
@@ -14,6 +26,7 @@ const SelectionRows = ({
   // index,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, getValues, setValue } = useFormContext();
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
     // control, // control props comes from useForm (optional: if you are using FormContext)
@@ -66,32 +79,60 @@ const SelectionRows = ({
   const getSelectedTeamByRank = rank => getSelectedTeam(getValues('teams').find(val => val.rank === rank).id);
 
 
+  const rows = fields.map((field, index) => {
+    const rank = length - index;
+    const { onChange, ...rest } = register(`teams.${index}.value`);
+
+    const selectionRowProps = {
+      rank,
+      selectedTeam: getSelectedTeamByRank(rank),
+      onChange: onChange2,
+      allTeams,
+      getValue,
+      isEditing: isEditing === rank,
+      setIsEditing,
+      selectOptions: getSelectOptions(chosenTeams),
+      selectProps: {...rest},
+    }
+
+    return (
+      <Grid key={rank} templateColumns="75px 1fr 1fr" borderBottom="1px solid" borderColor="grey" p="10px" m="10px" maxWidth={{ xl: '50%' }}>
+        <SelectionRow
+          {...selectionRowProps}
+        />
+      </Grid>
+    );
+  });
+
   return (
-    fields.map((field, index) => {
-      const rank = length - index;
-      const { onChange, ...rest } = register(`teams.${index}.value`);
-
-      const selectionRowProps = {
-        rank,
-        selectedTeam: getSelectedTeamByRank(rank),
-        onChange: onChange2,
-        allTeams,
-        getValue,
-        isEditing: isEditing === rank,
-        setIsEditing,
-        selectOptions: getSelectOptions(chosenTeams),
-        selectProps: {...rest},
-      }
-
-      return (
-        <Grid key={rank} templateColumns="75px 1fr 1fr" borderBottom="1px solid" borderColor="grey" p="10px" m="10px" maxWidth={{ xl: '50%' }}>
-          <SelectionRow
-            {...selectionRowProps}
-          />
-        </Grid>
-      );
-    })
-  );
+    <>
+      <Button
+        style={{ width: '100%' }}
+        size="lg" 
+        backgroundColor="blue"
+        color="white"
+        onClick={onOpen}
+      >
+        See Games
+      </Button>
+      {rows}
+      <Modal isOpen={isOpen} onClose={onClose} size={{ base: 'full', lg: '2xl' }}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Games</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <GameList />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  )
 };
 
 export default SelectionRows;

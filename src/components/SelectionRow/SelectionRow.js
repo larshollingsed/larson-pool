@@ -18,7 +18,7 @@ const SelectionRow = ({
     ref,
     handler: setIsEditing,
   });
-  
+
   if (!selectedTeam || isEditing) {
     return (
       <>
