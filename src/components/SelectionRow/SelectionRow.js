@@ -14,10 +14,10 @@ const SelectionRow = ({
   selectOptions,
 }) => {
   const ref = useRef();
-  useOutsideClick({
-    ref,
-    handler: setIsEditing,
-  });
+  // useOutsideClick({
+  //   ref,
+  //   handler: setIsEditing,
+  // });
 
   if (!selectedTeam || isEditing) {
     return (
