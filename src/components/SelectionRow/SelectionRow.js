@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, GridItem, Select, Text, Flex } from '@chakra-ui/react';
+import React, { useRef } from 'react';
+import { Button, GridItem, Select, Text, Flex, useOutsideClick } from '@chakra-ui/react';
 import { getGameByTeamId } from '../../mocks/mockGames';
 
 const SelectionRow = ({
@@ -13,6 +13,12 @@ const SelectionRow = ({
   setIsEditing,
   selectOptions,
 }) => {
+  const ref = useRef();
+  useOutsideClick({
+    ref,
+    handler: setIsEditing,
+  });
+  
   if (!selectedTeam || isEditing) {
     return (
       <>
@@ -20,7 +26,7 @@ const SelectionRow = ({
           <Text fontSize="96" marginRight="10px">{rank}</Text>
         </GridItem>
         <GridItem>
-          <Select key={rank} {...selectProps} onChange={onChange(rank)} value={getValue(rank) || undefined}>
+          <Select key={rank} {...selectProps} onChange={onChange(rank)} value={getValue(rank) || undefined} ref={ref}>
             <option value="">Select a team</option>
             {selectOptions}
           </Select>
