@@ -13,8 +13,9 @@ const SelectionForm = () => {
   // const total = mockGames.length;
   // const chosenGames = getChosenGames(selectedTeams);
   const { getValues, watch, formState: { isValid } } = useFormContext();
-  const teams = watch('teams');
-  const hasNotChosen = !!teams.filter(t => !t.school).length
+  // const teams = watch('teams');
+  // const hasNotChosen = !!teams.filter(t => !t.school).length
+  const hasNotChosen = false;
 
   const onSubmit = () => {
     setIsLoading(true);
@@ -37,7 +38,7 @@ const SelectionForm = () => {
     <Info />
       {hasNotChosen && (
         <Text color="red">
-          Please choose a team for each rank
+          Please choose a team and rank for each game
         </Text>
       )}
       <Divider size="3xl" orientation="horizontal" />

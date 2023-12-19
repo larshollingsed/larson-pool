@@ -5,7 +5,7 @@ const getTeams = () => {
 }
 
 const defaultValues = {
-  teams: getTeams(),
+  teams: [],
   // teams: [
   //   { rank: 15 },
   //   { rank: 14 },
